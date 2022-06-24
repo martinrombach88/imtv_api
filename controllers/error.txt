@@ -1,0 +1,19 @@
+[nodemon] starting `node app.js`
+Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rgb(33,54,80)', '1')' at line 1
+    at PromisePool.execute (C:\Users\Martin\Documents\GitHub\imtv_api\node_modules\mysql2\promise.js:359:22)
+    at addMedia (C:\Users\Martin\Documents\GitHub\imtv_api\controllers\media.js:57:6)
+    at exports.getMedia (C:\Users\Martin\Documents\GitHub\imtv_api\controllers\media.js:67:3)
+    at Layer.handle [as handle_request] (C:\Users\Martin\Documents\GitHub\imtv_api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Martin\Documents\GitHub\imtv_api\node_modules\express\lib\router\route.js:144:13)
+    at Route.dispatch (C:\Users\Martin\Documents\GitHub\imtv_api\node_modules\express\lib\router\route.js:114:3)
+    at Layer.handle [as handle_request] (C:\Users\Martin\Documents\GitHub\imtv_api\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Martin\Documents\GitHub\imtv_api\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Martin\Documents\GitHub\imtv_api\node_modules\express\lib\router\index.js:346:12)    
+    at next (C:\Users\Martin\Documents\GitHub\imtv_api\node_modules\express\lib\router\index.js:280:10) {
+  code: 'ER_PARSE_ERROR',
+  errno: 1064,
+  sql: "INSERT INTO media (titleKR, titleENG, mediaImg, mediaImgTall, clipVid, fullVid, channels, releaseDate, producerKR, writerKR, starringKR, descriptionKR, producerENG, writerENG, starringENG, descriptionENG, subTitleKR,subTitleENG, color, backgroundColor, inProduction) VALUES('밀키드 ', 'Fool in the End', './assets/images/home/foolWide.jpg', './assets/images/home/fool.png', '', '', 'Netflix', '', '', '', '', '‌<종말의 바보>는 지구와 소행성 충돌까지 200일, 눈앞에 예고된 종말을 앞두고 혼란에 빠진
+ 세상과 남은 시간을 살아가는 사람들의 이야기를 그린 넷플릭스 시리즈다.', '', '', '', '‌200 days until an asteroid collides wit
+h the Earth. The world is in chaos ahead of the foretold end.', '', '', 'rgb(174, 213, 243), 'rgb(33,54,80)', '1')",
+  sqlState: '42000',
+  sqlMessage: "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'rgb(33,54,80)', '1')' at line 1"

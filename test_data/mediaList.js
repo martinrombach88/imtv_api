@@ -250,7 +250,7 @@ const mediaList = [
     inProduction: "0",
   },
   {
-    titleKR: "밀키드 ",
+    titleKR: "중말의 바보",
     titleENG: "Fool in the End",
     mediaImg: "./assets/images/home/foolWide.jpg",
     mediaImgTall: "./assets/images/home/fool.png",
