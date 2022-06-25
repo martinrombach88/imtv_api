@@ -1,7 +1,7 @@
 const express = require("express");
 const db = require("./util/database");
 const bodyParser = require("body-parser");
-const mediaRoutes = require("./routes/media");
+const workRoutes = require("./routes/work");
 const newsRoutes = require("./routes/news");
 const staffRoutes = require("./routes/staff");
 const app = express();
@@ -17,7 +17,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(mediaRoutes);
+app.use(workRoutes);
 app.use(newsRoutes);
 app.use(staffRoutes);
 app.listen(8080);
