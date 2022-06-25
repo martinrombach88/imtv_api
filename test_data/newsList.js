@@ -123,4 +123,4 @@ const newsList = [
   },
 ];
 
-export default newsList;
+module.exports = newsList;

@@ -1,19 +1,15 @@
 const express = require("express");
 const mediaModel = require("../models/media");
 
-exports.getAllMedia = () => {
+exports.getAllMedia = (req, res, next) => {
   mediaModel
     .getAll()
     .then(([mediaItems]) => {
-      return mediaItems;
+      res.status(200).json({
+        mediaItems,
+      });
     })
     .catch((err) => console.log(err));
 };
 
-///TEST SELECT
-
-// db.execute("SELECT * FROM media")
-// .then((result) => {})
-// .catch((err) => {
-//   console.log(err);
-// });
+exports.addMedia = () => {};
