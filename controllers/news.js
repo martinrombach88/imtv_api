@@ -13,6 +13,6 @@ exports.getAllNews = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-exports.addNews = () => {
-  newsModel.add(newsList[0]);
-};
+// exports.addNews = () => {
+//   newsModel.add(newsList[4]);
+// };

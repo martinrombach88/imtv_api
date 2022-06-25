@@ -12,4 +12,4 @@ exports.getAllMedia = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-exports.addMedia = () => {};
+// exports.addMedia = () => {};

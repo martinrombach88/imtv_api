@@ -3,6 +3,9 @@ const express = require("express");
 const newsList = require("../test_data/newsList");
 
 exports.add = (newsItem) => {
+  const bodyStringKR = newsItem.bodyKR.join();
+  const bodyStringENG = newsItem.bodyENG.join();
+
   const string =
     (newsItem.image ? "'" + newsItem.image + "'" : "''") +
     ", " +
@@ -16,10 +19,9 @@ exports.add = (newsItem) => {
     ", " +
     (newsItem.titleENG ? "'" + newsItem.titleENG + "'" : "''") +
     ", " +
-    (newsItem.bodyKR ? "'" + newsItem.bodyKR + "'" : "''") +
+    (newsItem.bodyKR ? "'" + bodyStringKR + "'" : "''") +
     ", " +
-    (newsItem.bodyENG ? "'" + newsItem.bodyENG + "'" : "''") +
-    ", ";
+    (newsItem.bodyENG ? "'" + bodyStringENG + "'" : "''");
 
   db.execute(
     "INSERT INTO news (image, imageLarge, dateKR, dateENG, titleKR, titleENG, bodyKR, bodyENG) VALUES(" +
