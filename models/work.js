@@ -1,7 +1,7 @@
 const db = require("../util/database.js");
 const express = require("express");
 
-exports.add = (workItem) => {
+exports.post = (workItem) => {
   const string =
     (workItem.titleKR ? "'" + workItem.titleKR + "'" : "''") +
     ", " +
@@ -55,5 +55,5 @@ exports.add = (workItem) => {
 };
 
 exports.getAll = () => {
-  return db.execute("SELECT * FROM work");
+  return db.execute("SELECT * FROM work ORDER BY orderID ");
 };
