@@ -4,7 +4,6 @@ const newsList = require("../test_data/newsList");
 
 exports.post = (req) => {
   const newsItem = req.body;
-
   const string =
     (newsItem.image ? "'" + newsItem.image + "'" : "''") +
     ", " +
@@ -22,6 +21,7 @@ exports.post = (req) => {
     ", " +
     (newsItem.bodyENG ? "'" + newsItem.bodyENG + "'" : "''");
 
+  //This is asyncronous. Anything that calls it needs to be async.
   db.execute(
     "INSERT INTO news (image, imageLarge, dateKR, dateENG, titleKR, titleENG, bodyKR, bodyENG) VALUES(" +
       string +

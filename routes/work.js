@@ -3,6 +3,6 @@ const workController = require("../controllers/work");
 const router = express.Router();
 
 router.get("/getwork", workController.getAllWork);
-// router.get("/addwork", workController.addWork);
+router.post("/postwork", workController.postWork);
 
 module.exports = router;

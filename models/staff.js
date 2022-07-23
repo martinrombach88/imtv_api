@@ -1,23 +1,19 @@
 const db = require("../util/database.js");
 const express = require("express");
-const staffList = require("../test_data/staffList");
 
-exports.add = (staffItem) => {
-  const infoStringKR = staffItem.infoKR.join();
-  const infoStringENG = staffItem.infoENG.join();
-
+exports.postStaff = (staffItem) => {
   const string =
-    (staffItem.titleKR ? "'" + staffItem.titleKR + "'" : "''") +
+    (staffItem.body.titleKR ? "'" + staffItem.body.titleKR + "'" : "''") +
     ", " +
-    (staffItem.titleENG ? "'" + staffItem.titleENG + "'" : "''") +
+    (staffItem.body.titleENG ? "'" + staffItem.body.titleENG + "'" : "''") +
     ", " +
-    (staffItem.nameKR ? "'" + staffItem.nameKR + "'" : "''") +
+    (staffItem.body.nameKR ? "'" + staffItem.body.nameKR + "'" : "''") +
     ", " +
-    (staffItem.nameENG ? "'" + staffItem.nameENG + "'" : "''") +
+    (staffItem.body.nameENG ? "'" + staffItem.body.nameENG + "'" : "''") +
     ", " +
-    (staffItem.infoKR ? "'" + infoStringKR + "'" : "''") +
+    (staffItem.body.infoKR ? "'" + staffItem.body.infoKR + "'" : "''") +
     ", " +
-    (staffItem.infoENG ? "'" + infoStringENG + "'" : "''");
+    (staffItem.body.infoENG ? "'" + staffItem.body.infoENG + "'" : "''");
 
   db.execute(
     "INSERT INTO staff (titleENG, titleKR, nameENG, nameKR, infoKR, infoENG) VALUES(" +

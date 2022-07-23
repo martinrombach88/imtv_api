@@ -1,6 +1,5 @@
 const express = require("express");
 const staffModel = require("../models/staff");
-const staffList = require("../test_data/staffList");
 
 exports.getAllStaff = (req, res, next) => {
   staffModel
@@ -13,6 +12,6 @@ exports.getAllStaff = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-// exports.add = () => {
-//   staffModel.add(staffList[10]);
-// };
+exports.postStaff = (req, res) => {
+  staffModel.postStaff(req);
+};

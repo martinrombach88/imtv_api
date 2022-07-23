@@ -12,4 +12,6 @@ exports.getAllWork = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-// exports.addWork = () => {};
+exports.postWork = (req, res, next) => {
+  workModel.postWork(req);
+};

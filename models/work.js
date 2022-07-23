@@ -1,49 +1,55 @@
 const db = require("../util/database.js");
 const express = require("express");
 
-exports.post = (workItem) => {
+exports.postWork = (workItem) => {
   const string =
-    (workItem.titleKR ? "'" + workItem.titleKR + "'" : "''") +
+    (workItem.body.titleKR ? "'" + workItem.body.titleKR + "'" : "''") +
     ", " +
-    (workItem.titleENG ? "'" + workItem.titleENG + "'" : "''") +
+    (workItem.body.titleENG ? "'" + workItem.body.titleENG + "'" : "''") +
     ", " +
-    (workItem.image ? "'" + workItem.image + "'" : "''") +
+    (workItem.body.image ? "'" + workItem.body.image + "'" : "''") +
     ", " +
-    (workItem.imageTall ? "'" + workItem.imageTall + "'" : "''") +
+    (workItem.body.imageTall ? "'" + workItem.body.imageTall + "'" : "''") +
     ", " +
-    (workItem.clipVid ? "'" + workItem.clipVid + "'" : "''") +
+    (workItem.body.clipVid ? "'" + workItem.body.clipVid + "'" : "''") +
     ", " +
-    (workItem.fullVid ? "'" + workItem.fullVid + "'" : "''") +
+    (workItem.body.fullVid ? "'" + workItem.body.fullVid + "'" : "''") +
     ", " +
-    (workItem.channels ? "'" + workItem.channels + "'" : "''") +
+    (workItem.body.channels ? "'" + workItem.body.channels + "'" : "''") +
     ", " +
-    (workItem.releaseDate ? "'" + workItem.releaseDate + "'" : "''") +
+    (workItem.body.releaseDate ? "'" + workItem.body.releaseDate + "'" : "''") +
     ", " +
-    (workItem.producerKR ? "'" + workItem.producerKR + "'" : "''") +
+    (workItem.body.producerKR ? "'" + workItem.body.producerKR + "'" : "''") +
     ", " +
-    (workItem.writerKR ? "'" + workItem.writerKR + "'" : "''") +
+    (workItem.body.writerKR ? "'" + workItem.body.writerKR + "'" : "''") +
     ", " +
-    (workItem.starringKR ? "'" + workItem.starringKR + "'" : "''") +
+    (workItem.body.starringKR ? "'" + workItem.body.starringKR + "'" : "''") +
     ", " +
-    (workItem.descriptionKR ? "'" + workItem.descriptionKR + "'" : "''") +
+    (workItem.body.descriptionKR
+      ? "'" + workItem.body.descriptionKR + "'"
+      : "''") +
     ", " +
-    (workItem.producerENG ? "'" + workItem.producerENG + "'" : "''") +
+    (workItem.body.producerENG ? "'" + workItem.body.producerENG + "'" : "''") +
     ", " +
-    (workItem.writerENG ? "'" + workItem.writerENG + "'" : "''") +
+    (workItem.body.writerENG ? "'" + workItem.body.writerENG + "'" : "''") +
     ", " +
-    (workItem.starringENG ? "'" + workItem.starringENG + "'" : "''") +
+    (workItem.body.starringENG ? "'" + workItem.body.starringENG + "'" : "''") +
     ", " +
-    (workItem.descriptionENG ? "'" + workItem.descriptionENG + "'" : "''") +
+    (workItem.body.descriptionENG
+      ? "'" + workItem.body.descriptionENG + "'"
+      : "''") +
     ", " +
-    (workItem.subTitleKR ? "'" + workItem.subTitleKR + "'" : "''") +
+    (workItem.body.subTitleKR ? "'" + workItem.body.subTitleKR + "'" : "''") +
     ", " +
-    (workItem.subTitleENG ? "'" + workItem.subTitleENG + "'" : "''") +
+    (workItem.body.subTitleENG ? "'" + workItem.body.subTitleENG + "'" : "''") +
     ", " +
-    (workItem.color ? "'" + workItem.color + "'" : "''") +
+    (workItem.body.color ? "'" + workItem.body.color + "'" : "''") +
     ", " +
-    (workItem.backgroundColor ? "'" + workItem.backgroundColor + "'" : "''") +
+    (workItem.body.backgroundColor
+      ? "'" + workItem.body.backgroundColor + "'"
+      : "''") +
     ", " +
-    ("'" + workItem.inProduction + "'");
+    ("'" + workItem.body.inProduction + "'");
 
   db.execute(
     "INSERT INTO work (titleKR, titleENG, image, imageTall, clipVid, fullVid, channels, releaseDate, producerKR, writerKR, starringKR, descriptionKR, producerENG, writerENG, starringENG, descriptionENG, subTitleKR, subTitleENG, color, backgroundColor, inProduction) VALUES(" +
