@@ -12,6 +12,10 @@ exports.getAllWork = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-exports.postWork = (req, res, next) => {
+exports.postWork = (req) => {
   workModel.postWork(req);
+};
+
+exports.deleteWork = (req, res) => {
+  workModel.deleteWork(req.body.id);
 };

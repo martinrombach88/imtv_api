@@ -16,3 +16,7 @@ exports.getAllNews = (req, res, next) => {
 exports.postNews = (req, res, next) => {
   newsModel.post(req);
 };
+
+exports.deleteNews = (req, res) => {
+  newsModel.deleteNews(req.body.id);
+};

@@ -34,3 +34,9 @@ exports.post = (req) => {
 exports.getAll = () => {
   return db.execute("SELECT * FROM news");
 };
+
+exports.deleteNews = (newsId) => {
+  db.execute("DELETE FROM news WHERE id =" + newsId).catch((err) => {
+    console.log(err);
+  });
+};

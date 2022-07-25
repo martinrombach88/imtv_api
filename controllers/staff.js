@@ -15,3 +15,11 @@ exports.getAllStaff = (req, res, next) => {
 exports.postStaff = (req, res) => {
   staffModel.postStaff(req);
 };
+
+exports.deleteStaff = (req, res) => {
+  staffModel.deleteStaff(req.body.id);
+};
+
+exports.updateStaffOrder = (req, res) => {
+  staffModel.updateStaffOrder(req.body);
+};

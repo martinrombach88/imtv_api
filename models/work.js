@@ -63,3 +63,9 @@ exports.postWork = (workItem) => {
 exports.getAll = () => {
   return db.execute("SELECT * FROM work ORDER BY orderID ");
 };
+
+exports.deleteWork = (workId) => {
+  db.execute("DELETE FROM work WHERE id =" + workId).catch((err) => {
+    console.log(err);
+  });
+};
