@@ -2,7 +2,7 @@ const db = require("../util/database.js");
 const express = require("express");
 const newsList = require("../test_data/newsList");
 
-exports.post = (req) => {
+exports.addNews = (req) => {
   const newsItem = req.body;
   const string =
     (newsItem.image ? "'" + newsItem.image + "'" : "''") +
@@ -31,8 +31,35 @@ exports.post = (req) => {
   });
 };
 
-exports.getAll = () => {
+exports.getAllNews = () => {
   return db.execute("SELECT * FROM news");
+};
+
+exports.getNewsItem = (id) => {
+  // console.log(id);
+  return db.execute("SELECT * FROM news WHERE id = " + id);
+};
+
+exports.updateNews = (newsItem) => {
+  const idString = newsItem.id + "";
+  console.log(newsItem);
+  db.execute(
+    "UPDATE news SET dateKR = '" +
+      newsItem.dateKR +
+      "', dateENG = '" +
+      newsItem.dateENG +
+      "', titleKR = '" +
+      newsItem.titleKR +
+      "', titleENG = '" +
+      newsItem.titleENG +
+      "', bodyKR = '" +
+      newsItem.bodyKR +
+      "', bodyENG = '" +
+      newsItem.bodyENG +
+      "' WHERE id = '" +
+      idString +
+      "'"
+  );
 };
 
 exports.deleteNews = (newsId) => {

@@ -69,3 +69,11 @@ exports.deleteWork = (workId) => {
     console.log(err);
   });
 };
+
+exports.updateWorkOrder = (req) => {
+  for (let i = 0; i <= req.length; i++) {
+    db.execute(
+      "UPDATE work SET orderID = " + req[i].orderID + " WHERE id = " + req[i].id
+    );
+  }
+};

@@ -19,3 +19,7 @@ exports.postWork = (req) => {
 exports.deleteWork = (req, res) => {
   workModel.deleteWork(req.body.id);
 };
+
+exports.updateWorkOrder = (req, res) => {
+  workModel.updateWorkOrder(req.body);
+};

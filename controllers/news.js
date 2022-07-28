@@ -4,7 +4,7 @@ const newsList = require("../test_data/newsList");
 
 exports.getAllNews = (req, res, next) => {
   newsModel
-    .getAll()
+    .getAllNews()
     .then(([newsItems]) => {
       res.status(200).json({
         newsItems,
@@ -13,8 +13,23 @@ exports.getAllNews = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-exports.postNews = (req, res, next) => {
-  newsModel.post(req);
+exports.getNewsItem = (req, res, next) => {
+  newsModel
+    .getNewsItem(req.params.id)
+    .then(([newsItem]) => {
+      res.status(200).json({
+        newsItem,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+exports.addNews = (req, res, next) => {
+  newsModel.addNews(req);
+};
+
+exports.updateNews = (req, res, next) => {
+  newsModel.updateNews(req.body);
 };
 
 exports.deleteNews = (req, res) => {

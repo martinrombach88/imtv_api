@@ -12,8 +12,12 @@ exports.getAllStaff = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
-exports.postStaff = (req, res) => {
-  staffModel.postStaff(req);
+exports.addStaff = (req, res) => {
+  staffModel.addStaff(req);
+};
+
+exports.updateStaff = (req, res) => {
+  staffModel.updateStaff(req);
 };
 
 exports.deleteStaff = (req, res) => {
