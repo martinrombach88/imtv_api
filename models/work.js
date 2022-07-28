@@ -60,8 +60,62 @@ exports.postWork = (workItem) => {
   });
 };
 
+exports.updateWork = (workItem) => {
+  const idString = workItem.id + "";
+  db.execute(
+    "UPDATE work SET titleKR = '" +
+      workItem.titleKR +
+      "', descriptionKR ='" +
+      workItem.descriptionKR +
+      "', channels ='" +
+      workItem.channels +
+      "', releaseDate ='" +
+      workItem.releaseDate +
+      "', producerKR ='" +
+      workItem.producerKR +
+      "', writerKR ='" +
+      workItem.writerKR +
+      "', titleENG ='" +
+      workItem.titleENG +
+      "', descriptionENG ='" +
+      workItem.descriptionENG +
+      "', producerENG ='" +
+      workItem.producerENG +
+      "',  writerENG ='" +
+      workItem.writerENG +
+      "', starringENG ='" +
+      workItem.starringENG +
+      "', fullVid ='" +
+      workItem.fullVid +
+      "', clipVid ='" +
+      workItem.clipVid +
+      "', subTitleKR ='" +
+      workItem.subTitleKR +
+      "', subTitleENG ='" +
+      workItem.subTitleENG +
+      "', color ='" +
+      workItem.fontColor +
+      "', backgroundColor ='" +
+      workItem.backgroundColor +
+      "' WHERE id = '" +
+      idString +
+      "'"
+  );
+
+  if (workItem.inProduction === "1") {
+    db.execute(
+      "UPDATE work SET inProduction=0 WHERE NOT id='" + idString + "'"
+    );
+    db.execute("UPDATE work SET inProduction=1 WHERE id = '" + idString + "'");
+  }
+};
+
 exports.getAll = () => {
   return db.execute("SELECT * FROM work ORDER BY orderID ");
+};
+
+exports.getWorkItem = (id) => {
+  return db.execute("SELECT * FROM work WHERE id = " + id);
 };
 
 exports.deleteWork = (workId) => {
