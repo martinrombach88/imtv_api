@@ -12,12 +12,23 @@ exports.getAllStaff = (req, res, next) => {
     .catch((err) => console.log(err));
 };
 
+exports.getStaffItem = (req, res, next) => {
+  staffModel
+    .getStaffItem(req.params.id)
+    .then(([staffItem]) => {
+      res.status(200).json({
+        staffItem,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
 exports.addStaff = (req, res) => {
   staffModel.addStaff(req);
 };
 
 exports.updateStaff = (req, res) => {
-  staffModel.updateStaff(req);
+  staffModel.updateStaff(req.body);
 };
 
 exports.deleteStaff = (req, res) => {

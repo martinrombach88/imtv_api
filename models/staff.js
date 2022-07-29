@@ -16,7 +16,7 @@ exports.addStaff = (staffItem) => {
     (staffItem.body.infoENG ? '"' + staffItem.body.infoENG + '"' : '"');
 
   db.execute(
-    "INSERT INTO staff (titleENG, titleKR, nameENG, nameKR, infoKR, infoENG) VALUES(" +
+    "INSERT INTO staff (titleKR, titleENG, nameENG, nameKR, infoKR, infoENG) VALUES(" +
       string +
       ")"
   ).catch((err) => {
@@ -28,6 +28,10 @@ exports.getAll = () => {
   return db.execute("SELECT * FROM staff ORDER BY orderID");
 };
 
+exports.getStaffItem = (id) => {
+  return db.execute("SELECT * FROM staff WHERE id = " + id);
+};
+
 exports.deleteStaff = (staffId) => {
   db.execute("DELETE FROM staff WHERE id =" + staffId).catch((err) => {
     console.log(err);
@@ -35,24 +39,23 @@ exports.deleteStaff = (staffId) => {
 };
 
 exports.updateStaff = (staffItem) => {
-  const string =
-    (staffItem.body.titleKR ? '"' + staffItem.body.titleKR + '"' : '""') +
-    ", " +
-    (staffItem.body.titleENG ? '"' + staffItem.body.titleENG + '"' : '"') +
-    ", " +
-    (staffItem.body.nameKR ? '"' + staffItem.body.nameKR + '"' : '"') +
-    ", " +
-    (staffItem.body.nameENG ? '"' + staffItem.body.nameENG + '"' : '"') +
-    ", " +
-    (staffItem.body.infoKR ? '"' + staffItem.body.infoKR + '"' : '"') +
-    ", " +
-    (staffItem.body.infoENG ? '"' + staffItem.body.infoENG + '"' : '"');
-
+  const idString = staffItem.id + "";
   db.execute(
-    "UPDATE staff SET (titleENG, titleKR, nameENG, nameKR, infoKR, infoENG) VALUES(" +
-      string +
-      +"WHERE id = " +
-      req.id
+    "UPDATE staff SET titleKR =  '" +
+      staffItem.titleKR +
+      "', titleENG = '" +
+      staffItem.titleENG +
+      "',  infoKR = '" +
+      staffItem.infoKR +
+      "', infoENG = '" +
+      staffItem.infoENG +
+      "', nameKR = '" +
+      staffItem.nameKR +
+      "', nameENG = '" +
+      staffItem.nameENG +
+      "' WHERE id = '" +
+      idString +
+      "'"
   );
 };
 
@@ -61,7 +64,7 @@ exports.updateStaffOrder = (staffList) => {
     db.execute(
       "UPDATE staff SET orderID = " +
         staffList[i].orderID +
-        " WHERE id = " +
+        '" WHERE id = ' +
         staffList[i].id
     );
   }

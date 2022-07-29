@@ -36,13 +36,12 @@ exports.getAllNews = () => {
 };
 
 exports.getNewsItem = (id) => {
-  // console.log(id);
   return db.execute("SELECT * FROM news WHERE id = " + id);
 };
 
 exports.updateNews = (newsItem) => {
   const idString = newsItem.id + "";
-  console.log(newsItem);
+
   db.execute(
     "UPDATE news SET dateKR = '" +
       newsItem.dateKR +
