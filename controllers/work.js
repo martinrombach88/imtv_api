@@ -35,6 +35,26 @@ exports.deleteWork = (req, res) => {
   workModel.deleteWork(req.body.id);
 };
 
-exports.updateWorkOrder = (req, res) => {
-  workModel.updateWorkOrder(req.body);
+exports.workDirectionUp = (req, res) => {
+  let idObject = {
+    id: parseInt(req.body.id),
+    currentOrderID: parseInt(req.body.orderID),
+    prevOrderID: parseInt(req.body.orderID - 1),
+    nextOrderID: parseInt(req.body.orderID) + 1,
+  };
+  workModel.workDirectionUp(idObject);
+};
+
+exports.workDirectionDown = (req, res) => {
+  let idObject = {
+    id: parseInt(req.body.id),
+    currentOrderID: parseInt(req.body.orderID),
+    prevOrderID: parseInt(req.body.orderID - 1),
+    nextOrderID: parseInt(req.body.orderID) + 1,
+  };
+  workModel.workDirectionDown(idObject);
+};
+
+exports.resetWorkOrder = (req, res) => {
+  workModel.resetWorkOrder();
 };

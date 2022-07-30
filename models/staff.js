@@ -24,7 +24,7 @@ exports.addStaff = (staffItem) => {
   });
 };
 
-exports.getAll = () => {
+exports.getAllStaff = () => {
   return db.execute("SELECT * FROM staff ORDER BY orderID");
 };
 
@@ -58,14 +58,40 @@ exports.updateStaff = (staffItem) => {
       "'"
   );
 };
-
-exports.updateStaffOrder = (staffList) => {
-  for (let i = 0; i < staffList.length; i++) {
-    db.execute(
-      "UPDATE staff SET orderID = " +
-        staffList[i].orderID +
-        '" WHERE id = ' +
-        staffList[i].id
-    );
+exports.resetStaffOrder = () => {
+  for (let i = 0; i < 999; i++) {
+    db.execute("UPDATE staff SET orderID ='" + i + "' WHERE id = " + i);
   }
+};
+
+exports.staffDirectionUp = (idObject) => {
+  db.execute(
+    "UPDATE staff SET orderID = " +
+      idObject.currentOrderID +
+      " WHERE orderID = " +
+      idObject.prevOrderID
+  );
+  db.execute(
+    "UPDATE staff SET orderID = " +
+      idObject.prevOrderID +
+      " WHERE id = '" +
+      idObject.id +
+      "'"
+  );
+};
+
+exports.staffDirectionDown = (idObject) => {
+  db.execute(
+    "UPDATE staff SET orderID = " +
+      idObject.currentOrderID +
+      " WHERE orderID = " +
+      idObject.nextOrderID
+  );
+  db.execute(
+    "UPDATE staff SET orderID = " +
+      idObject.nextOrderID +
+      " WHERE id = '" +
+      idObject.id +
+      "'"
+  );
 };

@@ -124,10 +124,41 @@ exports.deleteWork = (workId) => {
   });
 };
 
-exports.updateWorkOrder = (req) => {
-  for (let i = 0; i <= req.length; i++) {
-    db.execute(
-      "UPDATE work SET orderID = " + req[i].orderID + " WHERE id = " + req[i].id
-    );
+exports.resetWorkOrder = () => {
+  for (let i = 0; i < 50; i++) {
+    db.execute("UPDATE work SET orderID ='" + i + "' WHERE id = " + i);
   }
+};
+
+exports.workDirectionUp = (idObject) => {
+  console.log(idObject);
+  db.execute(
+    "UPDATE work SET orderID = " +
+      idObject.currentOrderID +
+      " WHERE orderID = " +
+      idObject.prevOrderID
+  );
+  db.execute(
+    "UPDATE work SET orderID = " +
+      idObject.prevOrderID +
+      " WHERE id = '" +
+      idObject.id +
+      "'"
+  );
+};
+
+exports.workDirectionDown = (idObject) => {
+  db.execute(
+    "UPDATE work SET orderID = " +
+      idObject.currentOrderID +
+      " WHERE orderID = " +
+      idObject.nextOrderID
+  );
+  db.execute(
+    "UPDATE work SET orderID = " +
+      idObject.nextOrderID +
+      " WHERE id = '" +
+      idObject.id +
+      "'"
+  );
 };
