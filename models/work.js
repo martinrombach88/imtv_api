@@ -49,15 +49,28 @@ exports.postWork = (workItem) => {
       ? "'" + workItem.body.backgroundColor + "'"
       : "''") +
     ", " +
-    ("'" + workItem.body.inProduction + "'");
+    (workItem.body.inProduction
+      ? "'" + workItem.body.inProduction + "'"
+      : "''");
 
-  db.execute(
-    "INSERT INTO work (titleKR, titleENG, image, imageTall, clipVid, fullVid, channels, releaseDate, producerKR, writerKR, starringKR, descriptionKR, producerENG, writerENG, starringENG, descriptionENG, subTitleKR, subTitleENG, color, backgroundColor, inProduction) VALUES(" +
-      string +
-      ")"
-  ).catch((err) => {
-    console.log(err);
-  });
+  if (workItem.body.inProduction === "1") {
+    db.execute("UPDATE work SET inProduction = 0");
+    db.execute(
+      "INSERT INTO work (titleKR, titleENG, image, imageTall, clipVid, fullVid, channels, releaseDate, producerKR, writerKR, starringKR, descriptionKR, producerENG, writerENG, starringENG, descriptionENG, subTitleKR, subTitleENG, color, backgroundColor, inProduction) VALUES(" +
+        string +
+        ")"
+    ).catch((err) => {
+      console.log(err);
+    });
+  } else if (workItem.body.inProduction === "0") {
+    db.execute(
+      "INSERT INTO work (titleKR, titleENG, image, imageTall, clipVid, fullVid, channels, releaseDate, producerKR, writerKR, starringKR, descriptionKR, producerENG, writerENG, starringENG, descriptionENG, subTitleKR, subTitleENG, color, backgroundColor, inProduction) VALUES(" +
+        string +
+        ")"
+    ).catch((err) => {
+      console.log(err);
+    });
+  }
 };
 
 exports.updateWork = (workItem) => {
@@ -94,7 +107,7 @@ exports.updateWork = (workItem) => {
       "', subTitleENG ='" +
       workItem.subTitleENG +
       "', color ='" +
-      workItem.fontColor +
+      workItem.color +
       "', backgroundColor ='" +
       workItem.backgroundColor +
       "' WHERE id = '" +
@@ -131,7 +144,6 @@ exports.resetWorkOrder = () => {
 };
 
 exports.workDirectionUp = (idObject) => {
-  console.log(idObject);
   db.execute(
     "UPDATE work SET orderID = " +
       idObject.currentOrderID +

@@ -4,9 +4,10 @@ const bodyParser = require("body-parser");
 const workRoutes = require("./routes/work");
 const newsRoutes = require("./routes/news");
 const staffRoutes = require("./routes/staff");
+const homeRoutes = require("./routes/home");
 const app = express();
 
-app.use(bodyParser.json()); //application/json
+app.use(bodyParser.json());
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
@@ -16,8 +17,9 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 });
-
+app.use(homeRoutes);
 app.use(workRoutes);
 app.use(newsRoutes);
 app.use(staffRoutes);
+
 app.listen(8080);
