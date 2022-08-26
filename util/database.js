@@ -7,4 +7,6 @@ const pool = mysql.createPool({
   password: "password",
 });
 
+//Set timeout = 0 to avoid ERRCONN error.
+
 module.exports = pool.promise();

@@ -143,34 +143,13 @@ exports.resetWorkOrder = () => {
   }
 };
 
-exports.workDirectionUp = (idObject) => {
-  db.execute(
-    "UPDATE work SET orderID = " +
-      idObject.currentOrderID +
-      " WHERE orderID = " +
-      idObject.prevOrderID
-  );
-  db.execute(
-    "UPDATE work SET orderID = " +
-      idObject.prevOrderID +
-      " WHERE id = '" +
-      idObject.id +
-      "'"
-  );
-};
-
-exports.workDirectionDown = (idObject) => {
-  db.execute(
-    "UPDATE work SET orderID = " +
-      idObject.currentOrderID +
-      " WHERE orderID = " +
-      idObject.nextOrderID
-  );
-  db.execute(
-    "UPDATE work SET orderID = " +
-      idObject.nextOrderID +
-      " WHERE id = '" +
-      idObject.id +
-      "'"
-  );
+exports.workDirectionChange = (object) => {
+  for (let entry in object) {
+    db.execute(
+      "UPDATE work SET orderID = " +
+        object[entry].orderID +
+        " WHERE id = " +
+        object[entry].id
+    );
+  }
 };

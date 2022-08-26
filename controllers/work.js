@@ -36,23 +36,45 @@ exports.deleteWork = (req, res) => {
 };
 
 exports.workDirectionUp = (req, res) => {
-  let idObject = {
-    id: parseInt(req.body.id),
-    currentOrderID: parseInt(req.body.orderID),
-    prevOrderID: parseInt(req.body.orderID - 1),
-    nextOrderID: parseInt(req.body.orderID) + 1,
-  };
-  workModel.workDirectionUp(idObject);
+  let newObject = req.body.fullObject;
+
+  for (let object in req.body.fullObject) {
+    if (parseInt(req.body.idObject.orderID) === 1) {
+      return;
+    } else if (
+      req.body.fullObject[object].orderID ===
+      parseInt(req.body.idObject.orderID)
+    ) {
+      newObject[object].orderID--;
+    } else if (
+      req.body.fullObject[object].orderID ===
+      parseInt(req.body.idObject.orderID) - 1
+    ) {
+      newObject[object].orderID++;
+    }
+  }
+
+  workModel.workDirectionChange(newObject);
 };
 
 exports.workDirectionDown = (req, res) => {
-  let idObject = {
-    id: parseInt(req.body.id),
-    currentOrderID: parseInt(req.body.orderID),
-    prevOrderID: parseInt(req.body.orderID - 1),
-    nextOrderID: parseInt(req.body.orderID) + 1,
-  };
-  workModel.workDirectionDown(idObject);
+  let newObject = req.body.fullObject;
+
+  for (let object in req.body.fullObject) {
+    if (
+      req.body.fullObject[object].orderID ===
+      parseInt(req.body.idObject.orderID)
+    ) {
+      newObject[object].orderID++;
+    } else if (
+      req.body.fullObject[object].orderID ===
+      parseInt(req.body.idObject.orderID) + 1
+    ) {
+      newObject[object].orderID--;
+    }
+  }
+
+  workModel.workDirectionChange(newObject);
 };
 
 exports.resetWorkOrder = (req, res) => {
