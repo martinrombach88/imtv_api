@@ -6,7 +6,7 @@ const newsRoutes = require("./routes/news");
 const staffRoutes = require("./routes/staff");
 const homeRoutes = require("./routes/home");
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use((req, res, next) => {
@@ -22,5 +22,9 @@ app.use(homeRoutes);
 app.use(workRoutes);
 app.use(newsRoutes);
 app.use(staffRoutes);
+app.get((req, res) => {
+  res.render("IMTV API ");
+});
 
 app.listen(port);
+console.log("Server is listening on Port " + port);
