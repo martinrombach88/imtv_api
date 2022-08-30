@@ -22,7 +22,7 @@ app.use(homeRoutes);
 app.use(workRoutes);
 app.use(newsRoutes);
 app.use(staffRoutes);
-app.get((req, res) => {
+app.get("/", (req, res) => {
   res.render("IMTV API ");
 });
 
