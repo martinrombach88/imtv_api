@@ -2,7 +2,7 @@ const express = require("express");
 const workController = require("../controllers/work");
 const router = express.Router();
 
-router.get("/getwork", workController.getAllWork);
+router.get("imtvapi.herokuapp.com/getwork", workController.getAllWork);
 router.get("/getworkitem/:id", workController.getWorkItem);
 router.post("/updatework", workController.updateWork);
 router.post("/postwork", workController.postWork);
