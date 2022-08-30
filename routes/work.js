@@ -8,6 +8,6 @@ router.post("/updatework", workController.updateWork);
 router.post("/postwork", workController.postWork);
 router.post("/deletework", workController.deleteWork);
 router.get("/resetworkorder", workController.resetWorkOrder);
-router.post("/workdirectionup/", workController.workDirectionUp);
-router.post("/workdirectiondown/", workController.workDirectionDown);
+router.post("/workdirectionup", workController.workDirectionUp);
+router.post("/workdirectiondown", workController.workDirectionDown);
 module.exports = router;

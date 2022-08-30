@@ -1,6 +1,5 @@
 const db = require("../util/database.js");
 const express = require("express");
-const newsList = require("../test_data/newsList");
 
 exports.addNews = (req) => {
   const newsItem = req.body;
