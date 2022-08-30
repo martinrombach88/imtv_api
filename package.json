@@ -1,6 +1,6 @@
 {
-  "name": "imtvapi",
-  "homepage": "https://imtvapi.herokuapp.com/",
+  "name": "imtv_api",
+  "homepage": "https://imtv-api.herokuapp.com/",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",

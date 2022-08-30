@@ -18,9 +18,7 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 });
-app.get("/", (req, res) => {
-  res.render("IMTV API ");
-});
+
 app.use(homeRoutes);
 app.use(workRoutes);
 app.use(newsRoutes);
