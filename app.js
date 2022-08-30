@@ -6,7 +6,7 @@ const newsRoutes = require("./routes/news");
 const staffRoutes = require("./routes/staff");
 const homeRoutes = require("./routes/home");
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 app.use(bodyParser.json());
 app.use((req, res, next) => {
@@ -25,4 +25,3 @@ app.use(newsRoutes);
 app.use(staffRoutes);
 
 app.listen(port);
-console.log("Server is listening on Port " + port);
