@@ -68,7 +68,7 @@ exports.addNews = (req) => {
 };
 
 exports.getAllNews = () => {
-  return db.execute("SELECT * FROM news");
+  return db.execute("SELECT * FROM news DESC");
 };
 
 exports.getNewsItem = (id) => {
