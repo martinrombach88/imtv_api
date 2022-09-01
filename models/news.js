@@ -3,7 +3,6 @@ const express = require("express");
 
 exports.addNews = (req) => {
   const newsItem = req.body;
-
   const string =
     (newsItem.image ? "'" + newsItem.image + "'" : "''") +
     ", " +

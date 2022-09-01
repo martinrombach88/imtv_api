@@ -6,7 +6,7 @@ const newsRoutes = require("./routes/news");
 const staffRoutes = require("./routes/staff");
 const homeRoutes = require("./routes/home");
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 app.use(bodyParser.json());
 app.use((req, res, next) => {
