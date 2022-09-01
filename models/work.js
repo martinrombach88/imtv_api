@@ -112,6 +112,10 @@ exports.updateWork = (workItem) => {
       workItem.color +
       "', backgroundColor ='" +
       workItem.backgroundColor +
+      "', image ='" +
+      workItem.image +
+      "', imageTall ='" +
+      workItem.imageTall +
       "' WHERE id = '" +
       idString +
       "'"
