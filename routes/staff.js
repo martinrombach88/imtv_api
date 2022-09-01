@@ -1,7 +1,7 @@
 const express = require("express");
 const staffController = require("../controllers/staff");
 const router = express.Router();
-const s = "imtvapi.herokuapp.com";
+
 
 router.get("/getstaff", staffController.getAllStaff);
 router.get("/getstaffitem/:id", staffController.getStaffItem);

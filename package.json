@@ -1,13 +1,12 @@
 {
   "name": "imtv_api",
-  "homepage": "https://imtv-api.herokuapp.com/",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
-  "author": "",
+  "author": "Martin Rombach",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.0",

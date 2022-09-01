@@ -1,7 +1,6 @@
 const express = require("express");
 const workController = require("../controllers/work");
 const router = express.Router();
-const s = "imtv-api.herokuapp.com";
 
 router.get("/getwork", workController.getAllWork);
 router.get("/getworkitem/:id", workController.getWorkItem);
