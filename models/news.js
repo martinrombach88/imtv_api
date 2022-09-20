@@ -116,7 +116,7 @@ exports.updateNews = (newsItem) => {
       newsItem[14] +
       "', image = '" +
       newsItem.image +
-      ", imageLarge = '" +
+      "', imageLarge = '" +
       newsItem.imageLarge +
       "' WHERE id = '" +
       idString +
