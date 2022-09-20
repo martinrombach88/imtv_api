@@ -76,7 +76,7 @@ exports.getNewsItem = (id) => {
 
 exports.updateNews = (newsItem) => {
   const idString = newsItem.id + "";
-
+  console.log(newsItem);
   db.execute(
     "UPDATE news SET dateKR = '" +
       newsItem.dateKR +
@@ -115,9 +115,9 @@ exports.updateNews = (newsItem) => {
       "', bodyENG7 = '" +
       newsItem[14] +
       "', image = '" +
-      image +
+      newsItem.image +
       ", imageLarge = '" +
-      imageLarge +
+      newsItem.imageLarge +
       "' WHERE id = '" +
       idString +
       "'"
