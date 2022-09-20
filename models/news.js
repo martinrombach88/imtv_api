@@ -114,6 +114,10 @@ exports.updateNews = (newsItem) => {
       newsItem[13] +
       "', bodyENG7 = '" +
       newsItem[14] +
+      "', image = '" +
+      image +
+      ", imageLarge = '" +
+      imageLarge +
       "' WHERE id = '" +
       idString +
       "'"
