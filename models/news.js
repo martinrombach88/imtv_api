@@ -1,4 +1,4 @@
-const db = require("../util/database.js");
+const db = require("../util/db.js");
 const express = require("express");
 
 exports.addNews = (req) => {
