@@ -1,9 +1,11 @@
-const db = require("../util/db.js");
+const db = require("../util/database.js");
 const express = require("express");
 
 exports.addNews = (req) => {
   const newsItem = req.body;
   const string =
+    (newsItem.id ? "'" + newsItem.id + "'" : "''") +
+    ", " +
     (newsItem.image ? "'" + newsItem.image + "'" : "''") +
     ", " +
     (newsItem.imageLarge ? "'" + newsItem.imageLarge + "'" : "''") +
@@ -49,7 +51,7 @@ exports.addNews = (req) => {
   if (newsItem.inProduction === "1") {
     db.execute("UPDATE news SET inProduction = 0");
     db.execute(
-      "INSERT INTO news (image, imageLarge, dateKR, dateENG, titleKR, titleENG, bodyKR1, bodyKR2, bodyKR3, bodyKR4, bodyKR5, bodyKR6, bodyKR7, bodyENG1, bodyENG2, bodyENG3, bodyENG4, bodyENG5, bodyENG6, bodyENG7, inProduction) VALUES(" +
+      "INSERT INTO news (id, image, imageLarge, dateKR, dateENG, titleKR, titleENG, bodyKR1, bodyKR2, bodyKR3, bodyKR4, bodyKR5, bodyKR6, bodyKR7, bodyENG1, bodyENG2, bodyENG3, bodyENG4, bodyENG5, bodyENG6, bodyENG7, inProduction) VALUES(" +
         string +
         ")"
     ).catch((err) => {
@@ -57,7 +59,7 @@ exports.addNews = (req) => {
     });
   } else if (newsItem.inProduction === "0") {
     db.execute(
-      "INSERT INTO news (image, imageLarge, dateKR, dateENG, titleKR, titleENG, bodyKR1, bodyKR2, bodyKR3, bodyKR4, bodyKR5, bodyKR6, bodyKR7, bodyENG1, bodyENG2, bodyENG3, bodyENG4, bodyENG5, bodyENG6, bodyENG7, inProduction) VALUES(" +
+      "INSERT INTO news (id, image, imageLarge, dateKR, dateENG, titleKR, titleENG, bodyKR1, bodyKR2, bodyKR3, bodyKR4, bodyKR5, bodyKR6, bodyKR7, bodyENG1, bodyENG2, bodyENG3, bodyENG4, bodyENG5, bodyENG6, bodyENG7, inProduction) VALUES(" +
         string +
         ")"
     ).catch((err) => {
