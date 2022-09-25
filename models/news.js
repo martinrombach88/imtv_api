@@ -78,7 +78,6 @@ exports.getNewsItem = (id) => {
 
 exports.updateNews = (newsItem) => {
   const idString = newsItem.id + "";
-  console.log(newsItem);
   db.execute(
     "UPDATE news SET dateKR = '" +
       newsItem.dateKR +
@@ -124,6 +123,13 @@ exports.updateNews = (newsItem) => {
       idString +
       "'"
   );
+
+  if (newsItem.inProduction === "1") {
+    db.execute(
+      "UPDATE news SET inProduction=0 WHERE NOT id='" + idString + "'"
+    );
+    db.execute("UPDATE news SET inProduction=1 WHERE id = '" + idString + "'");
+  }
 };
 
 exports.deleteNews = (newsId) => {
