@@ -50,7 +50,7 @@ exports.addStaff = (staffItem) => {
     (staffItem.body[19] ? "'" + staffItem.body[19] + "'" : "''") +
     ", " +
     (staffItem.body[20] ? "'" + staffItem.body[20] + "'" : "''");
-  console.log(string);
+
   db.execute(
     "INSERT INTO staff (titleKR, titleENG, nameKR, nameENG, infoKR1, infoKR2, infoKR3, infoKR4, infoKR5, infoKR6, infoKR7, infoKR8, infoKR9, infoKR10, infoENG1, infoENG2, infoENG3, infoENG4, infoENG5, infoENG6, infoENG7, infoENG8, infoENG9, infoENG10) VALUES(" +
       string +
